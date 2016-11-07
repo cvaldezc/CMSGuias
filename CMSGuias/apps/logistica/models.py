@@ -280,6 +280,7 @@ class ServiceOrder(models.Model):
     sigv = models.BooleanField(default=True, blank=True)
     status = models.CharField(max_length=2, default='PE')
     flag = models.BooleanField(default=True)
+    tag = models.CharField(max_length=80, default='#TODO')
 
     def __unicode__(self):
         return u'%s %s %s %s' % (

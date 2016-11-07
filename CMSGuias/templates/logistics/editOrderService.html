@@ -123,6 +123,15 @@
                             <label for="sigv" class="grey-text text-darken-3">Incluye IGV</label>
                         </div>
                     </div>
+                    <div class="col l6 m6 s12 input-field">
+                        <input type="text" ng-model="so.tag" name="tag" id="tag">
+                        <label for="tag" ng-class="{'active': so.tag}">Categoria</label>
+                        <br>
+                        <small>Ejemplo:</small>
+                        <div class="chip cursor-hand" ng-click="setCategory('#Transporte')">#Transporte</div>
+                        <div class="chip cursor-hand" ng-click="setCategory('#Alquiler')">#Alquiler</div>
+                        <div class="chip cursor-hand" ng-click="setCategory('#Servicio')">#Servicio</div>
+                    </div>
                 </div>
             </div>
         </div>

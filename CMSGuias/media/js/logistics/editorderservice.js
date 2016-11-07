@@ -144,15 +144,15 @@
         return defer.promise;
       };
       getsubtotal().then(function(result) {
-        var _stt;
+        var sst;
         $scope.dstotal = Number(result.toFixed(3));
         $scope.ddsct = Number((($scope.dstotal * $scope.so.dsct) / 100).toFixed(3));
-        _stt = Number(($scope.dstotal - $scope.ddsct).toFixed(3));
+        sst = Number(($scope.dstotal - $scope.ddsct).toFixed(3));
         if ($scope.so.sigv === true) {
           $scope.dsigv = Number((($scope.dstotal * $scope.digv) / 100).toFixed(3));
-          _stt += $scope.dsigv;
+          sst += $scope.dsigv;
         }
-        $scope.dtotal = _stt;
+        $scope.dtotal = sst;
       });
     };
     $scope.showEdit = function(pk, obj) {
@@ -162,6 +162,9 @@
       $scope.edit.price = Number(obj.price);
       $scope.edit.unit = obj.unit;
       angular.element("#eDetails").openModal();
+    };
+    $scope.setCategory = function(value) {
+      $scope.so.tag = "" + value;
     };
     $scope.applyDetails = function() {
       $scope.edit.description = angular.element("#desc").trumbowyg('html');
@@ -222,8 +225,23 @@
         closeOnConfirm: true,
         closeOnCancel: true
       }, function(isConfirm) {
+        var tg;
         if (isConfirm) {
-          soFactory.saveOrder().success(function(response) {
+          tg = $scope.so.tag;
+          if (tg.search(/\#/) !== -1) {
+            tg = tg.split(/\#/).pop().split(/\s/)[0];
+            if (tg === "") {
+              Materialize.toast("Error en la categoria", 3000);
+              return false;
+            } else {
+              $scope.so.tag = tg;
+            }
+          } else {
+            Materialize.toast("Formato de Categoria!", 3000);
+            return false;
+          }
+          $scope.so.saveOrder = true;
+          soFactory.saveOrder($scope.so).success(function(response) {
             if (response.status) {
               Materialize.toast("<i class='fa fa-check fa-lg green-text'></i> &nbsp;Se actualizo correctamente!", 2500);
               $timeout(function() {

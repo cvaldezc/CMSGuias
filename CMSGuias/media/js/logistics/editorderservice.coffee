@@ -104,14 +104,14 @@ do ->
             getsubtotal().then (result) ->
                 $scope.dstotal = Number(result.toFixed(3))
                 # apply discount
-                $scope.ddsct = Number((($scope.dstotal * $scope.so.dsct)/100).toFixed(3))
-                _stt = Number(($scope.dstotal - $scope.ddsct).toFixed(3))
+                $scope.ddsct = Number((($scope.dstotal * $scope.so.dsct) / 100).toFixed(3))
+                sst = Number(($scope.dstotal - $scope.ddsct).toFixed(3))
                 # apply igv
                 if $scope.so.sigv is true
-                    $scope.dsigv = Number((($scope.dstotal * $scope.digv)/100).toFixed(3))
-                    _stt += $scope.dsigv
+                    $scope.dsigv = Number((($scope.dstotal * $scope.digv) / 100).toFixed(3))
+                    sst += $scope.dsigv
                 # get total
-                $scope.dtotal = _stt
+                $scope.dtotal = sst
                 return
             return
 
@@ -124,6 +124,10 @@ do ->
             $scope.edit.price = Number(obj.price)
             $scope.edit.unit = obj.unit
             angular.element("#eDetails").openModal()
+            return
+
+        $scope.setCategory = (value) ->
+            $scope.so.tag = "#{value}"
             return
 
         $scope.applyDetails = ->
@@ -196,7 +200,19 @@ do ->
                 closeOnCancel: true
             , (isConfirm) ->
                 if isConfirm
-                    soFactory.saveOrder()
+                    tg = $scope.so.tag
+                    if tg.search(/\#/) isnt -1
+                        tg = tg.split(/\#/).pop().split(/\s/)[0]
+                        if tg is ""
+                            Materialize.toast "Error en la categoria", 3000
+                            return false
+                        else
+                            $scope.so.tag = tg
+                    else
+                        Materialize.toast "Formato de Categoria!", 3000
+                        return false
+                    $scope.so.saveOrder = true
+                    soFactory.saveOrder($scope.so)
                     .success (response) ->
                         if response.status
                             Materialize.toast "<i class='fa fa-check fa-lg green-text'></i> &nbsp;Se actualizo correctamente!", 2500
