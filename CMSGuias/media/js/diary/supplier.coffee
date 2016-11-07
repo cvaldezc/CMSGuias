@@ -13,7 +13,7 @@ app.controller 'supCtrl', ($scope, $http, $cookies) ->
     $('.datepicker').pickadate
       container: 'body'
       format: 'yyyy-mm-dd'
-    $('.modal-trigger').leanModal()
+    $('.modal-trigger').modal()
     $(".modal.bottom-sheet").css "max-height", "60%"
     $scope.listSupplier()
     # $scope.listCharge()

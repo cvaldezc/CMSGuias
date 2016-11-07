@@ -10,7 +10,7 @@ app.controller 'bidCtrl', ($scope, $http, $cookies) ->
   $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
   angular.element(document).ready ->
     console.log 'init document'
-    $(".modal-trigger").leanModal()
+    $(".modal-trigger").modal()
     $scope.getItem()
     return
   $scope.item = {}

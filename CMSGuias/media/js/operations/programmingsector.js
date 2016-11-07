@@ -17,7 +17,7 @@ app.controller('programingCtrl', function($scope, $http, $cookies, $timeout) {
   $scope.charge = "";
   $scope.dsector = [];
   angular.element(document).ready(function() {
-    $('.modal-trigger').leanModal();
+    $('.modal-trigger').modal();
     $(".datepicker").pickadate({
       container: 'body',
       format: 'yyyy-mm-dd',
@@ -36,7 +36,7 @@ app.controller('programingCtrl', function($scope, $http, $cookies, $timeout) {
     console.log($scope.area);
     console.log($scope.charge);
     $timeout(function() {
-      return $('.modal-trigger').leanModal();
+      return $('.modal-trigger').modal();
     }, 600);
   });
   $scope.$watch('group.colour', function(val, old) {

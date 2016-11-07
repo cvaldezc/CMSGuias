@@ -113,7 +113,7 @@ controller = function($scope, $timeout, $q, inventoryFactory) {
         $scope.ginit = true;
       }
     });
-    angular.element('.modal-trigger').leanModal({
+    angular.element('.modal-trigger').modal({
       dismissible: false
     });
   });

@@ -9,7 +9,7 @@ app.controller 'BItemsCtrl', ($scope, $http, $cookies) ->
   $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
   angular.element(document).ready ->
     console.log "init document"
-    $('.modal-trigger').leanModal()
+    $('.modal-trigger').modal()
     $(".modal.bottom-sheet").css "max-height", "80%"
     $scope.showDetails()
     return

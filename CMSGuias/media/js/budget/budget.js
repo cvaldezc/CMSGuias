@@ -2,7 +2,7 @@ var app, getBudgetData, saveBudget, showBudget, showBudgetEdit, showSearchBudget
 
 $(function() {
   $("select").material_select();
-  $(".modal-trigger").leanModal();
+  $(".modal-trigger").modal();
   $("[name=finish]").pickadate({
     closeOnSelect: true,
     container: 'body',
@@ -27,7 +27,7 @@ $(function() {
 showBudget = function(event) {
   $("[name=budget]").val("");
   $("#nbudget").openModal();
-  console.log("leanModal");
+  console.log("modal");
 };
 
 showSearchBudget = function(event) {

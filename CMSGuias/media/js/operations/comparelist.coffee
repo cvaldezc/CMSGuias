@@ -59,7 +59,7 @@ app.controller 'ctrl', ($scope, $cookies, $timeout, $q, fDSMetrado) ->
   $scope.ename = ""
   $scope.eunit = ""
   angular.element(document).ready ->
-    angular.element('.modal-trigger').leanModal()
+    angular.element('.modal-trigger').modal()
     # angular.element("select").material_select()
     console.log "estamos listos!"
     $scope.loadList()

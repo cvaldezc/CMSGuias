@@ -86,7 +86,7 @@ controllers = ($scope, $timeout, $q, attendFactory) ->
 	$scope.nroguide = ''
 	angular.element(document).ready ->
 		# console.log "angular load success!"
-		angular.element(".modal-trigger").leanModal
+		angular.element(".modal-trigger").modal
 			dismissible: false
 		if $scope.init is true
 			angular.element(".datepicker").pickadate

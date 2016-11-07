@@ -40,7 +40,7 @@ do ->
         $scope.dels = []
 
         angular.element(document).ready ->
-            angular.element(".modal-trigger").leanModal()
+            angular.element(".modal-trigger").modal()
             angular.element(".chosen-select").chosen width: '100%'
             angular.element("#desc").trumbowyg()
             angular.element('.trumbowyg-editor, .trumbowyg-box')

@@ -60,7 +60,7 @@ controller = ($scope, $timeout, $q, inventoryFactory) ->
             $scope.lstinv = response.materials
             $scope.ginit = true
             return
-    angular.element('.modal-trigger').leanModal
+    angular.element('.modal-trigger').modal
       dismissible: false
     return
 

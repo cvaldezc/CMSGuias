@@ -82,7 +82,7 @@
     $scope.edit = [];
     $scope.dels = [];
     angular.element(document).ready(function() {
-      angular.element(".modal-trigger").leanModal();
+      angular.element(".modal-trigger").modal();
       angular.element(".chosen-select").chosen({
         width: '100%'
       });

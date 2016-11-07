@@ -1783,8 +1783,8 @@ class EditServiceOrder(JSONResponseMixin, TemplateView):
 
     @method_decorator(login_required)
     def post(self, request, *args, **kwargs):
-        print request.POST
-        print request.is_ajax(), 'IS AJAX'
+        # print request.POST
+        # print request.is_ajax(), 'IS AJAX'
         if request.is_ajax():
             try:
                 if 'editd' in request.POST:

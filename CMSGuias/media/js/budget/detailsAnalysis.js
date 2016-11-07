@@ -192,7 +192,7 @@ showEditMaterials = function() {
 };
 
 editMaterials = function(event) {
-  var context, e, error;
+  var context, e;
   context = new Object;
   context.quantity = $(".edit-tmp-quantity").val();
   context.price = $(".edit-tmp-price").val();

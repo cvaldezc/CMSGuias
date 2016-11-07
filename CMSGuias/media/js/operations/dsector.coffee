@@ -40,7 +40,7 @@ app.controller 'DSCtrl', ($scope, $http, $cookies, $compile, $timeout, $sce, $q)
   $scope.sdnip = []
   $scope.lplanes = []
   angular.element(document).ready ->
-    $('.modal-trigger').leanModal()
+    $('.modal-trigger').modal()
     $table = $(".floatThead")
     $table.floatThead
       position: 'absolute'

@@ -153,7 +153,7 @@ controllers = function($scope, $timeout, $q, attendFactory) {
   $scope.idxobs = -1;
   $scope.nroguide = '';
   angular.element(document).ready(function() {
-    angular.element(".modal-trigger").leanModal({
+    angular.element(".modal-trigger").modal({
       dismissible: false
     });
     if ($scope.init === true) {

@@ -11,7 +11,7 @@ app.controller('bidCtrl', function($scope, $http, $cookies) {
   $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
   angular.element(document).ready(function() {
     console.log('init document');
-    $(".modal-trigger").leanModal();
+    $(".modal-trigger").modal();
     $scope.getItem();
   });
   $scope.item = {};

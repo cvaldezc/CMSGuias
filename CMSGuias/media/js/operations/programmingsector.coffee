@@ -15,7 +15,7 @@ app.controller 'programingCtrl', ($scope, $http, $cookies, $timeout) ->
   $scope.charge = ""
   $scope.dsector = []
   angular.element(document).ready ->
-    $('.modal-trigger').leanModal()
+    $('.modal-trigger').modal()
     $(".datepicker").pickadate
       container: 'body'
       format: 'yyyy-mm-dd'
@@ -33,7 +33,7 @@ app.controller 'programingCtrl', ($scope, $http, $cookies, $timeout) ->
     console.log $scope.area
     console.log $scope.charge
     $timeout ->
-      $('.modal-trigger').leanModal()
+      $('.modal-trigger').modal()
     , 600
     return
   $scope.$watch 'group.colour', (val, old) ->

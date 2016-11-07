@@ -15,7 +15,7 @@ app.controller('supCtrl', function($scope, $http, $cookies) {
       container: 'body',
       format: 'yyyy-mm-dd'
     });
-    $('.modal-trigger').leanModal();
+    $('.modal-trigger').modal();
     $(".modal.bottom-sheet").css("max-height", "60%");
     $scope.listSupplier();
   });
