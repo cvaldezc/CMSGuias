@@ -212,6 +212,8 @@ do ->
                         Materialize.toast "Formato de Categoria!", 3000
                         return false
                     $scope.so.saveOrder = true
+                    $scope.det  = $scope.details
+                    $scope.del = $scope.dels
                     soFactory.saveOrder($scope.so)
                     .success (response) ->
                         if response.status
