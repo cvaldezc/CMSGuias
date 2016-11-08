@@ -17,7 +17,7 @@ app.controller('programingCtrl', function($scope, $http, $cookies, $timeout) {
   $scope.charge = "";
   $scope.dsector = [];
   angular.element(document).ready(function() {
-    $('.modal-trigger').modal();
+    $('.modal').modal();
     $(".datepicker").pickadate({
       container: 'body',
       format: 'yyyy-mm-dd',
@@ -36,7 +36,7 @@ app.controller('programingCtrl', function($scope, $http, $cookies, $timeout) {
     console.log($scope.area);
     console.log($scope.charge);
     $timeout(function() {
-      return $('.modal-trigger').modal();
+      return $('.modal').modal();
     }, 600);
   });
   $scope.$watch('group.colour', function(val, old) {
@@ -59,7 +59,7 @@ app.controller('programingCtrl', function($scope, $http, $cookies, $timeout) {
   };
   $scope.saveGroup = function() {
     var data;
-    $("#mlgroup").closeModal();
+    $("#mlgroup").modal('close');
     data = $scope.group;
     data.saveg = true;
     $http({
@@ -69,7 +69,7 @@ app.controller('programingCtrl', function($scope, $http, $cookies, $timeout) {
     }).success(function(response) {
       if (response.status) {
         Materialize.toast('Se guardado correctamente', 1800);
-        $("#mgroup").closeModal();
+        $("#mgroup").modal('close');
         $scope.listGroup();
       } else {
         swal("Error", "no se a guardado los datos. " + response.raise, "error");
@@ -87,7 +87,7 @@ app.controller('programingCtrl', function($scope, $http, $cookies, $timeout) {
       if (response.status) {
         $scope.sglist = response.sg;
         if (!$("#mlgroup").is(":visible")) {
-          $("#mlgroup").openModal();
+          $("#mlgroup").modal('open');
         }
         setTimeout(function() {
           $('.dropdown-button').dropdown();
@@ -104,7 +104,7 @@ app.controller('programingCtrl', function($scope, $http, $cookies, $timeout) {
       colour: rgbtohex(this.$parent.x.fields.colour),
       observation: this.$parent.x.fields.observation
     };
-    $("#mgroup").openModal();
+    $("#mgroup").modal('open');
   };
   $scope.saveArea = function() {
     var data, form, k, v;
@@ -147,7 +147,7 @@ app.controller('programingCtrl', function($scope, $http, $cookies, $timeout) {
               }
             });
           }
-          $("#mdsector").closeModal();
+          $("#mdsector").modal('close');
         } else {
           swal("Error!", "No se guardo los datos. " + response.raise, "error");
         }
@@ -164,7 +164,7 @@ app.controller('programingCtrl', function($scope, $http, $cookies, $timeout) {
     $scope.dsector.sgroup = dsector.fields.sgroup.pk;
     $scope.dsector.description = dsector.fields.description;
     $scope.dsector.pk = dsector.pk;
-    angular.element("#mdsector").openModal();
+    angular.element("#mdsector").modal('open');
   };
   $scope.datechk = function() {
     var end, start;
@@ -201,7 +201,7 @@ app.controller('programingCtrl', function($scope, $http, $cookies, $timeout) {
         $scope.withoutPrices = response.list;
         console.log($scope.withoutPrices);
         console.log(response.list);
-        $("#mwithoutprices").openModal();
+        $("#mwithoutprices").modal('open');
         console.log("Se encontraron materielas sin precio");
         swal({
           title: "Se han encontrado materiales sin precios",

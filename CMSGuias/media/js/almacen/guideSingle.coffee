@@ -333,7 +333,7 @@ app.controller 'SGuideCtrl', ($scope, $http, $cookies, $timeout) ->
         return
     $scope.showObs = ($event) ->
         $scope.obs = $event.currentTarget.dataset
-        $('#mobs').openModal()
+        $('#mobs').modal('open')
         return
     $scope.saveObser = ($event) ->
         $data = $scope.obs
@@ -350,7 +350,7 @@ app.controller 'SGuideCtrl', ($scope, $http, $cookies, $timeout) ->
                     brand: ''
                     model: ''
                     observation: ''
-                $('#mobs').closeModal()
+                $('#mobs').modal('close')
                 return
             else
                 swal "Error", "No se guardo la observación.", "error"

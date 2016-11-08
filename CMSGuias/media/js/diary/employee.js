@@ -15,7 +15,7 @@ app.controller("empCtrl", function($scope, $http, $cookies) {
       container: 'body',
       format: 'yyyy-mm-dd'
     });
-    $('.modal-trigger').modal();
+    $('.modal').modal();
     $(".modal.bottom-sheet").css("max-height", "60%");
     $scope.listEmployee();
     $scope.listCharge();
@@ -66,7 +66,7 @@ app.controller("empCtrl", function($scope, $http, $cookies) {
       if (response.status) {
         swal('Felicidades!', 'Se guardo correctamente los datos.', 'success');
         $scope.listEmployee();
-        $("#madd").closeModal();
+        $("#madd").modal('close');
       } else {
         swal('Error', 'error al guardar los cambios.', 'error');
       }
@@ -87,7 +87,7 @@ app.controller("empCtrl", function($scope, $http, $cookies) {
       fixed: em.x.fields.fixed,
       charge: em.x.fields.charge.pk
     };
-    $("#madd").openModal();
+    $("#madd").modal('open');
   };
   $scope.showDetails = function() {
     $scope.employee = {
@@ -102,7 +102,7 @@ app.controller("empCtrl", function($scope, $http, $cookies) {
       phonejob: this.x.fields.phonejob,
       fixed: this.x.fields.fixed
     };
-    return $("#mdetails").openModal();
+    return $("#mdetails").modal('open');
   };
   $scope.showDelete = function() {
     $scope.employee = {
@@ -112,7 +112,7 @@ app.controller("empCtrl", function($scope, $http, $cookies) {
       email: this.x.fields.email
     };
     console.log($scope.employee, "here ");
-    return $("#delemp").openModal();
+    return $("#delemp").modal('open');
   };
   $scope.employeeDown = function() {
     var params;
@@ -127,7 +127,7 @@ app.controller("empCtrl", function($scope, $http, $cookies) {
       if (response.status) {
         $scope.employee.observation = '';
         $scope.listEmployee();
-        $("#delemp").closeModal();
+        $("#delemp").modal('close');
       } else {
         swal('Error!', 'No se a podido realizar la transacción con existo!', 'error');
       }

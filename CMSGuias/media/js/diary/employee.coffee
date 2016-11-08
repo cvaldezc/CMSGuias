@@ -13,7 +13,7 @@ app.controller "empCtrl", ($scope, $http, $cookies) ->
     $('.datepicker').pickadate
       container: 'body'
       format: 'yyyy-mm-dd'
-    $('.modal-trigger').modal()
+    $('.modal').modal()
     $(".modal.bottom-sheet").css "max-height", "60%"
     $scope.listEmployee()
     $scope.listCharge()
@@ -60,7 +60,7 @@ app.controller "empCtrl", ($scope, $http, $cookies) ->
       if response.status
         swal 'Felicidades!', 'Se guardo correctamente los datos.', 'success'
         $scope.listEmployee()
-        $("#madd").closeModal()
+        $("#madd").modal('close')
         return
       else
         swal 'Error', 'error al guardar los cambios.', 'error'
@@ -83,7 +83,7 @@ app.controller "empCtrl", ($scope, $http, $cookies) ->
     #$("[name=charge] option").filter ->
     #  this.value is em.x.fields.charge.pk
     #.attr 'selected', true
-    $("#madd").openModal()
+    $("#madd").modal('open')
     return
   $scope.showDetails = ->
     $scope.employee =
@@ -97,7 +97,7 @@ app.controller "empCtrl", ($scope, $http, $cookies) ->
       phone: this.x.fields.phone
       phonejob: this.x.fields.phonejob
       fixed: this.x.fields.fixed
-    $("#mdetails").openModal()
+    $("#mdetails").modal('open')
   $scope.showDelete = ->
     $scope.employee =
       empdni_id: this.x.pk
@@ -105,7 +105,7 @@ app.controller "empCtrl", ($scope, $http, $cookies) ->
       lastname: this.x.fields.lastname
       email: this.x.fields.email
     console.log $scope.employee, "here "
-    $("#delemp").openModal()
+    $("#delemp").modal('open')
   $scope.employeeDown = ->
     params = $scope.employee
     params.delemp = true
@@ -118,7 +118,7 @@ app.controller "empCtrl", ($scope, $http, $cookies) ->
       if response.status
         $scope.employee.observation = ''
         $scope.listEmployee()
-        $("#delemp").closeModal()
+        $("#delemp").modal('close')
         return
       else
         swal 'Error!', 'No se a podido realizar la transacción con existo!', 'error'

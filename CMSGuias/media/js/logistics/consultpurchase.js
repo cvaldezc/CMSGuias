@@ -75,7 +75,7 @@ app.controller('cPurchase', function($scope, $timeout, fPuchase) {
       fPuchase.filterMaterials(prm).success(function(response) {
         if (response.status) {
           $scope.resultmat = response.result;
-          angular.element("#mresult").openModal();
+          angular.element("#mresult").modal('open');
         } else {
           swal({
             title: "No se ha encontrado datos",
@@ -104,7 +104,7 @@ app.controller('cPurchase', function($scope, $timeout, fPuchase) {
     fPuchase.filterHist(prm).success(function(response) {
       if (response.status) {
         $scope.resumen = response.resumen;
-        angular.element("#mresult").closeModal();
+        angular.element("#mresult").modal('close');
         if (response.hasOwnProperty('years')) {
           $scope.syears = response.years;
         }

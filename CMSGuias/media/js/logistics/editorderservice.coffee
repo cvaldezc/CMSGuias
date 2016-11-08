@@ -40,7 +40,7 @@ do ->
         $scope.dels = []
 
         angular.element(document).ready ->
-            angular.element(".modal-trigger").modal()
+            angular.element('.modal').modal()
             angular.element(".chosen-select").chosen width: '100%'
             angular.element("#desc").trumbowyg()
             angular.element('.trumbowyg-editor, .trumbowyg-box')
@@ -123,7 +123,7 @@ do ->
             $scope.edit.quantity = obj.quantity
             $scope.edit.price = Number(obj.price)
             $scope.edit.unit = obj.unit
-            angular.element("#eDetails").openModal()
+            angular.element("#eDetails").modal('open')
             return
 
         $scope.setCategory = (value) ->
@@ -138,7 +138,7 @@ do ->
             # .success (response) ->
             #     if response.status
             #         $scope.loadDetails()
-            #         angular.element("#eDetails").closeModal()
+            #         angular.element("#eDetails").modal('close')
             #         return
             #     else
             #         Materialize.toast "<i class='fa fa-times-circle fa-lg'></i>", 3000
@@ -212,8 +212,8 @@ do ->
                         Materialize.toast "Formato de Categoria!", 3000
                         return false
                     $scope.so.saveOrder = true
-                    $scope.det  = $scope.details
-                    $scope.del = $scope.dels
+                    $scope.so.det  = $scope.details
+                    $scope.so.del = $scope.dels
                     soFactory.saveOrder($scope.so)
                     .success (response) ->
                         if response.status
@@ -224,7 +224,7 @@ do ->
                             , 2500
                             return
                         else
-                            Materialize.toast "NO se han guardado los datos", 4000
+                            Materialize.toast "No se han guardado los datos", 4000
                             return
                     return
             return

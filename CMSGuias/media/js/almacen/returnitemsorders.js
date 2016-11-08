@@ -173,7 +173,7 @@ app.controller('rioC', function($scope, rioF) {
       }
     });
     $scope.datareturn = tmp;
-    angular.element("#mview").openModal();
+    angular.element("#mview").modal('open');
   };
   $scope.sendReturnList = function() {
     if (!$scope.showNipple && !$scope.vnip) {
@@ -275,7 +275,7 @@ app.controller('rioC', function($scope, rioF) {
       if (response.status === true && response.valid === true) {
         $scope.gnp = response.gnp;
         $scope.showNipple = true;
-        angular.element("#mnp").openModal();
+        angular.element("#mnp").modal('open');
       } else {
         $scope.vnip = true;
         $scope.showNipple = true;

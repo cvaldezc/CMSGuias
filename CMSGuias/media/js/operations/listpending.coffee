@@ -38,7 +38,7 @@ app.controller 'cpC', ($scope, $timeout, cpf) ->
                 $scope.ds = []
                 $scope.sg = response.sg
                 $scope.bsearch = 'sgroup'
-                angular.element("#mselection").openModal()
+                angular.element("#mselection").modal('open')
                 return
             else
                 swal "Error", "#{response.raise}", "warning"
@@ -54,7 +54,7 @@ app.controller 'cpC', ($scope, $timeout, cpf) ->
                 $scope.sg = []
                 $scope.ds = response.ds
                 $scope.bsearch = 'dsector'
-                angular.element("#mselection").openModal()
+                angular.element("#mselection").modal('open')
                 return
             else
                 swal "Error", "#{response.raise}", "warning"
@@ -79,7 +79,7 @@ app.controller 'cpC', ($scope, $timeout, cpf) ->
         .success (response) ->
             if response.status
                 $scope.gdata = response.dataset
-                angular.element("#mselection").closeModal()
+                angular.element("#mselection").modal('close')
                 $scope.dg = false
                 return
             else
@@ -118,7 +118,7 @@ app.controller 'cpC', ($scope, $timeout, cpf) ->
             console.log response
             if response.status
                 $scope.dataDetails = response.data
-                angular.element("#mdetails").openModal()
+                angular.element("#mdetails").modal('open')
                 return
             else
                 swal "Alerta!", "#{response.raise}", "warning"

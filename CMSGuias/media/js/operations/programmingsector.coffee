@@ -15,7 +15,7 @@ app.controller 'programingCtrl', ($scope, $http, $cookies, $timeout) ->
   $scope.charge = ""
   $scope.dsector = []
   angular.element(document).ready ->
-    $('.modal-trigger').modal()
+    $('.modal').modal()
     $(".datepicker").pickadate
       container: 'body'
       format: 'yyyy-mm-dd'
@@ -33,7 +33,7 @@ app.controller 'programingCtrl', ($scope, $http, $cookies, $timeout) ->
     console.log $scope.area
     console.log $scope.charge
     $timeout ->
-      $('.modal-trigger').modal()
+      $('.modal').modal()
     , 600
     return
   $scope.$watch 'group.colour', (val, old) ->
@@ -52,7 +52,7 @@ app.controller 'programingCtrl', ($scope, $http, $cookies, $timeout) ->
           return
     return
   $scope.saveGroup = ->
-    $("#mlgroup").closeModal()
+    $("#mlgroup").modal('close')
     data = $scope.group
     data.saveg = true
     $http
@@ -62,7 +62,7 @@ app.controller 'programingCtrl', ($scope, $http, $cookies, $timeout) ->
     .success (response) ->
       if response.status
         Materialize.toast 'Se guardado correctamente', 1800
-        $("#mgroup").closeModal()
+        $("#mgroup").modal('close')
         $scope.listGroup()
         return
       else
@@ -77,7 +77,7 @@ app.controller 'programingCtrl', ($scope, $http, $cookies, $timeout) ->
         if response.status
           $scope.sglist = response.sg
           if !$("#mlgroup").is(":visible")
-            $("#mlgroup").openModal()
+            $("#mlgroup").modal('open')
           setTimeout ->
             $('.dropdown-button').dropdown()
             return
@@ -93,7 +93,7 @@ app.controller 'programingCtrl', ($scope, $http, $cookies, $timeout) ->
       name: this.$parent.x.fields.name
       colour: rgbtohex this.$parent.x.fields.colour
       observation: this.$parent.x.fields.observation
-    $("#mgroup").openModal()
+    $("#mgroup").modal('open')
     return
   $scope.saveArea = ->
     data = $scope.dsector
@@ -128,7 +128,7 @@ app.controller 'programingCtrl', ($scope, $http, $cookies, $timeout) ->
                 index = String $element.attr "data-index"
                 $scope.getAreasByGroup pk, index
                 return
-          $("#mdsector").closeModal()
+          $("#mdsector").modal('close')
           return
         else
           swal "Error!", "No se guardo los datos. #{response.raise}", "error"
@@ -144,7 +144,7 @@ app.controller 'programingCtrl', ($scope, $http, $cookies, $timeout) ->
     $scope.dsector.description = dsector.fields.description
     # $scope.dsector['plane'] = dsector.fields
     $scope.dsector.pk = dsector.pk
-    angular.element("#mdsector").openModal()
+    angular.element("#mdsector").modal('open')
     return
   
   $scope.datechk = ->
@@ -174,7 +174,7 @@ app.controller 'programingCtrl', ($scope, $http, $cookies, $timeout) ->
         $scope.withoutPrices = response.list
         console.log $scope.withoutPrices
         console.log response.list
-        $("#mwithoutprices").openModal()
+        $("#mwithoutprices").modal('open')
         console.log "Se encontraron materielas sin precio"
         swal
           title: "Se han encontrado materiales sin precios"

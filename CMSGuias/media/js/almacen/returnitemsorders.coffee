@@ -155,7 +155,7 @@ app.controller 'rioC', ($scope, rioF) ->
 						return
 			return
 		$scope.datareturn = tmp
-		angular.element("#mview").openModal()
+		angular.element("#mview").modal('open')
 		return
 
 	$scope.sendReturnList = ->
@@ -252,7 +252,7 @@ app.controller 'rioC', ($scope, rioF) ->
 			if response.status is true and response.valid is true
 				$scope.gnp = response.gnp
 				$scope.showNipple = true
-				angular.element("#mnp").openModal()
+				angular.element("#mnp").modal('open')
 				return
 			else
 				$scope.vnip = true

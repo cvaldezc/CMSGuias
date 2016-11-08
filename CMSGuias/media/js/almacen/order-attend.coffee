@@ -198,7 +198,7 @@ controllers = ($scope, $timeout, $q, attendFactory) ->
 		.success (response) ->
 			if response.status
 				$scope.sdetails = response.details
-				angular.element("#midetails").openModal()
+				angular.element("#midetails").modal('open')
 				return
 			else
 				Materialize.toast 'No hay datos para mostrar', 3600, 'rounded'
@@ -470,7 +470,7 @@ controllers = ($scope, $timeout, $q, attendFactory) ->
 				# console.warn result
 				if result
 					$scope.enableGuide()
-					angular.element("#mstock").closeModal()
+					angular.element("#mstock").modal('close')
 					Materialize.toast "<i class='fa fa-check fa-2x green-text'></i>&nbsp;Completo!", 3000
 					$timeout ->
 						angular.element('.lean-overlay').remove()
@@ -560,14 +560,14 @@ controllers = ($scope, $timeout, $q, attendFactory) ->
 			if amount > $scope.stks[$scope.indexshownip].stock 
 				Materialize.toast "<i class='fa fa-times red-text'></i>&nbsp; Stock es menor a lo seleccionado.", 8000
 				$scope.snip = new Array()
-				angular.element("#snip").closeModal()
+				angular.element("#snip").modal('close')
 				return false
 			else
 				$scope.stks[$scope.indexshownip].quantity = amount
 				if response >= 0
 					$scope.nipdetails[response].details = $scope.snip
 					$scope.snip = new Array()
-					angular.element("#snip").closeModal()
+					angular.element("#snip").modal('close')
 					# console.log $scope.nipdetails
 					return
 				else
@@ -577,7 +577,7 @@ controllers = ($scope, $timeout, $q, attendFactory) ->
 						'model': $scope.gmodel
 						'details': $scope.snip
 					$scope.snip = new Array()
-					angular.element("#snip").closeModal()
+					angular.element("#snip").modal('close')
 					# console.log $scope.nipdetails
 					return
 		return
@@ -589,7 +589,7 @@ controllers = ($scope, $timeout, $q, attendFactory) ->
 			x.status = false
 			# amount += ((x.meter * x.guide)/100)
 		$scope.stks[$scope.indexshownip].quantity = amount
-		angular.element("#snip").closeModal()
+		angular.element("#snip").modal('close')
 		$scope.snip = new Array()
 		#console.log $scope.snip
 		return
@@ -611,7 +611,7 @@ controllers = ($scope, $timeout, $q, attendFactory) ->
 				.then (result) ->
 					if result
 						$scope.enableGuide()
-						angular.element("#mstock").closeModal()
+						angular.element("#mstock").modal('close')
 						Materialize.toast "<i class='fa fa-check fa-2x green-text'></i>&nbsp; Completo!", 3000
 						$timeout ->
 							angular.element('.lean-overlay').remove()
@@ -661,13 +661,13 @@ controllers = ($scope, $timeout, $q, attendFactory) ->
 	$scope.openObs = (index) ->
 		$scope.idxobs = index
 		$scope.icomment = ''
-		angular.element("#iobs").openModal()
+		angular.element("#iobs").modal('open')
 		angular.element("#textObs").trumbowyg()
 		return
 
 	$scope.saveComment = ->
 		$scope.dguide[$scope.idxobs].observation = angular.element("#textObs").trumbowyg("html")
-		angular.element("#iobs").closeModal()
+		angular.element("#iobs").modal('close')
 		return
 
 	$scope.openGenerateGuide = ->
@@ -676,7 +676,7 @@ controllers = ($scope, $timeout, $q, attendFactory) ->
 			items += x.details.length
 		if items > 12
 			Materialize.toast "<i class='fa fa-exclamation-circle fa-2x amber-text'></i>&nbsp; Has seleccionado más de 12 items para la guia de remisión!<br>&nbsp;Te recomendamos que quites algunos items para poder imprimir la guia sin problemas.", 60000
-		angular.element("#mguide").openModal()
+		angular.element("#mguide").modal('open')
 		return
 
 	$scope.genGuide = ->
@@ -717,7 +717,7 @@ controllers = ($scope, $timeout, $q, attendFactory) ->
 					attendFactory.genGuideRemision(prms)
 					.success (response) ->
 						if response.status
-							angular.element("#mguide").closeModal()
+							angular.element("#mguide").modal('close')
 							Materialize.toast "<i class='fa fa-check fa-2x green-text'></i>&nbsp;Felicidades!, Se genero la guia <strong>#{prms.guide}</strong>", 2000
 							$timeout ->
 								$scope.vgenrem = true
@@ -744,7 +744,7 @@ controllers = ($scope, $timeout, $q, attendFactory) ->
 		return
 
 	$scope.closePrint = ->
-		angular.element("#mprint").closeModal()
+		angular.element("#mprint").modal('close')
 		location.reload()
 		return
 

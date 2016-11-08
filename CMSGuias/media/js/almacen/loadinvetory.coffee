@@ -159,7 +159,7 @@ controller = ($scope, $timeout, $q, inventoryFactory) ->
           if response.status
             Materialize.toast "<i class='fa fa-check green-text'></i>&nbsp; Archivo Cargado!", 4000
             $timeout ->
-              angular.element("#mupload").closeModal()
+              angular.element("#mupload").modal('close')
               $scope.bload = !$scope.bload
               return
             , 4000

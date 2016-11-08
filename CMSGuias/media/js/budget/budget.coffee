@@ -1,7 +1,7 @@
 $ ->
   # $(".panel-sbudget, .panel-details-budget").hide()
   $("select").material_select()
-  $(".modal-trigger").modal()
+  $('.modal').modal()
   $("[name=finish]").pickadate
     closeOnSelect: true
     container: 'body'
@@ -26,7 +26,7 @@ $ ->
 
 showBudget = (event) ->
   $("[name=budget]").val ""
-  $("#nbudget").openModal()
+  $("#nbudget").modal('open')
   console.log "modal"
   return
 

@@ -382,7 +382,7 @@ app.controller('SGuideCtrl', function($scope, $http, $cookies, $timeout) {
   };
   $scope.showObs = function($event) {
     $scope.obs = $event.currentTarget.dataset;
-    $('#mobs').openModal();
+    $('#mobs').modal('open');
   };
   $scope.saveObser = function($event) {
     var $data;
@@ -401,7 +401,7 @@ app.controller('SGuideCtrl', function($scope, $http, $cookies, $timeout) {
           model: '',
           observation: ''
         };
-        $('#mobs').closeModal();
+        $('#mobs').modal('close');
       } else {
         swal("Error", "No se guardo la observación.", "error");
       }

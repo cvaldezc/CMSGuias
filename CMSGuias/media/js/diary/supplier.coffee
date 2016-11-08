@@ -13,7 +13,7 @@ app.controller 'supCtrl', ($scope, $http, $cookies) ->
     $('.datepicker').pickadate
       container: 'body'
       format: 'yyyy-mm-dd'
-    $('.modal-trigger').modal()
+    $('.modal').modal()
     $(".modal.bottom-sheet").css "max-height", "60%"
     $scope.listSupplier()
     # $scope.listCharge()
@@ -49,7 +49,7 @@ app.controller 'supCtrl', ($scope, $http, $cookies) ->
       if response.status
         swal 'Felicidades!', 'Se guardo los datos correctamente.', 'success'
         $scope.listEmployee()
-        $("#madd").closeModal()
+        $("#madd").modal('close')
         return
       else
         swal 'Error', 'error al guardar los cambios.', 'error'
@@ -83,7 +83,7 @@ app.controller 'supCtrl', ($scope, $http, $cookies) ->
     setTimeout ->
       $("[name=distrito]").val option.x.fields.distrito.pk
     , 2600
-    $("#madd").openModal()
+    $("#madd").modal('open')
     console.log $scope.supplier
     return
   return

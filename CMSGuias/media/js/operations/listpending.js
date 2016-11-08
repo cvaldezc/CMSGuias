@@ -70,7 +70,7 @@ app.controller('cpC', function($scope, $timeout, cpf) {
         $scope.ds = [];
         $scope.sg = response.sg;
         $scope.bsearch = 'sgroup';
-        angular.element("#mselection").openModal();
+        angular.element("#mselection").modal('open');
       } else {
         swal("Error", "" + response.raise, "warning");
       }
@@ -86,7 +86,7 @@ app.controller('cpC', function($scope, $timeout, cpf) {
         $scope.sg = [];
         $scope.ds = response.ds;
         $scope.bsearch = 'dsector';
-        angular.element("#mselection").openModal();
+        angular.element("#mselection").modal('open');
       } else {
         swal("Error", "" + response.raise, "warning");
       }
@@ -112,7 +112,7 @@ app.controller('cpC', function($scope, $timeout, cpf) {
     return cpf.getData(prm).success(function(response) {
       if (response.status) {
         $scope.gdata = response.dataset;
-        angular.element("#mselection").closeModal();
+        angular.element("#mselection").modal('close');
         $scope.dg = false;
       } else {
         swal("Alerta!", "" + response.raise, "warning");
@@ -155,7 +155,7 @@ app.controller('cpC', function($scope, $timeout, cpf) {
       console.log(response);
       if (response.status) {
         $scope.dataDetails = response.data;
-        angular.element("#mdetails").openModal();
+        angular.element("#mdetails").modal('open');
       } else {
         swal("Alerta!", "" + response.raise, "warning");
       }

@@ -15,7 +15,7 @@ app.controller('supCtrl', function($scope, $http, $cookies) {
       container: 'body',
       format: 'yyyy-mm-dd'
     });
-    $('.modal-trigger').modal();
+    $('.modal').modal();
     $(".modal.bottom-sheet").css("max-height", "60%");
     $scope.listSupplier();
   });
@@ -53,7 +53,7 @@ app.controller('supCtrl', function($scope, $http, $cookies) {
       if (response.status) {
         swal('Felicidades!', 'Se guardo los datos correctamente.', 'success');
         $scope.listEmployee();
-        $("#madd").closeModal();
+        $("#madd").modal('close');
       } else {
         swal('Error', 'error al guardar los cambios.', 'error');
       }
@@ -82,7 +82,7 @@ app.controller('supCtrl', function($scope, $http, $cookies) {
     setTimeout(function() {
       return $("[name=distrito]").val(option.x.fields.distrito.pk);
     }, 2600);
-    $("#madd").openModal();
+    $("#madd").modal('open');
     console.log($scope.supplier);
   };
 });

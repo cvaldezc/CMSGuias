@@ -13,7 +13,7 @@ $ ->
   $('select').material_select()
   $('.dropdown-button').dropdown
     constrain_width: 200
-  $('.modal-trigger').modal()
+  $('.modal').modal()
   $(".modal.bottom-sheet").css "max-height", "60%"
   return
 

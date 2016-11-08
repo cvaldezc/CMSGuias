@@ -10,7 +10,7 @@ app.controller 'bidCtrl', ($scope, $http, $cookies) ->
   $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
   angular.element(document).ready ->
     console.log 'init document'
-    $(".modal-trigger").modal()
+    $('.modal').modal()
     $scope.getItem()
     return
   $scope.item = {}
@@ -75,7 +75,7 @@ app.controller 'bidCtrl', ($scope, $http, $cookies) ->
       unit: this.x.unit
       performance: this.x.performance
       amount: this.x.amount
-    $("#manalysis").closeModal()
+    $("#manalysis").modal('close')
     $scope.ashow = true
     return
   $scope.addAnalysis = ->

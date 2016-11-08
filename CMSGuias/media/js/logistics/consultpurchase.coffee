@@ -51,7 +51,7 @@ app.controller 'cPurchase', ($scope, $timeout, fPuchase) ->
 			.success (response) ->
 				if response.status
 					$scope.resultmat = response.result
-					angular.element("#mresult").openModal()
+					angular.element("#mresult").modal('open')
 					return
 				else
 					swal
@@ -77,7 +77,7 @@ app.controller 'cPurchase', ($scope, $timeout, fPuchase) ->
 			if response.status
 				$scope.resumen = response.resumen
 				# $scope.ryear = response.years
-				angular.element("#mresult").closeModal()
+				angular.element("#mresult").modal('close')
 				if response.hasOwnProperty 'years'
 					$scope.syears = response.years
 				$scope.sbyear = response.resumen[0].fields.compra.fields.registrado.substr(0, 4)

@@ -55,7 +55,7 @@ app.controller('DSCtrl', function($scope, $http, $cookies, $compile, $timeout, $
   $scope.lplanes = [];
   angular.element(document).ready(function() {
     var $table;
-    $('.modal-trigger').modal();
+    $('.modal').modal();
     $table = $(".floatThead");
     $table.floatThead({
       position: 'absolute',
@@ -804,7 +804,7 @@ app.controller('DSCtrl', function($scope, $http, $cookies, $compile, $timeout, $
     });
   };
   $scope.showCommentMat = function() {
-    $("#commentm").openModal();
+    $("#commentm").modal('open');
     $("#mcs").val(this.$parent.x.fields.materials.pk).attr("data-brand", this.$parent.x.fields.brand.pk).attr("data-model", this.$parent.x.fields.model.pk);
     $scope.mmc = this.$parent.x.fields.comment;
     console.log(this.$parent.x.fields.comment);
@@ -831,7 +831,7 @@ app.controller('DSCtrl', function($scope, $http, $cookies, $compile, $timeout, $
       $event.currentTarget.innerHTML = "<i class=\"fa fa-floppy-o\"></i> GUARDAR";
       if (response.status) {
         $scope.mmc = '';
-        $("#commentm").closeModal();
+        $("#commentm").modal('close');
       }
     });
   };
@@ -863,7 +863,7 @@ app.controller('DSCtrl', function($scope, $http, $cookies, $compile, $timeout, $
     });
     if (data.length) {
       $scope.dataOrders = data;
-      $("#morders").openModal();
+      $("#morders").modal('open');
       return;
     }
   };
@@ -904,7 +904,7 @@ app.controller('DSCtrl', function($scope, $http, $cookies, $compile, $timeout, $
     remove().then(function(result) {
       $scope.dataOrders = $tmp;
       if ($scope.dataOrders.length <= 0) {
-        angular.element("#morders").closeModal();
+        angular.element("#morders").modal('close');
       }
     });
   };
@@ -1091,7 +1091,7 @@ app.controller('DSCtrl', function($scope, $http, $cookies, $compile, $timeout, $
       }
     }).success(function(response, status, headers, config) {
       if (response.status) {
-        angular.element("#mdplane").closeModal();
+        angular.element("#mdplane").modal('close');
         $scope.listPlanes();
       } else {
         swal("Alerta!", "No se a podido subir el archivo.", "error");
@@ -1102,7 +1102,7 @@ app.controller('DSCtrl', function($scope, $http, $cookies, $compile, $timeout, $
   };
   $scope.showFull = function(file) {
     angular.element("#sPlane > div > iframe").attr("src", $scope.validUrl(file));
-    angular.element("#sPlane").openModal();
+    angular.element("#sPlane").modal('open');
   };
   $scope.delPlane = function(plane) {
     swal({

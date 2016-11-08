@@ -259,7 +259,7 @@ controllers = function($scope, $timeout, $q, attendFactory) {
     }).success(function(response) {
       if (response.status) {
         $scope.sdetails = response.details;
-        angular.element("#midetails").openModal();
+        angular.element("#midetails").modal('open');
       } else {
         Materialize.toast('No hay datos para mostrar', 3600, 'rounded');
       }
@@ -516,7 +516,7 @@ controllers = function($scope, $timeout, $q, attendFactory) {
       $scope.stock().then(function(result) {
         if (result) {
           $scope.enableGuide();
-          angular.element("#mstock").closeModal();
+          angular.element("#mstock").modal('close');
           Materialize.toast("<i class='fa fa-check fa-2x green-text'></i>&nbsp;Completo!", 3000);
           $timeout(function() {
             angular.element('.lean-overlay').remove();
@@ -603,14 +603,14 @@ controllers = function($scope, $timeout, $q, attendFactory) {
       if (amount > $scope.stks[$scope.indexshownip].stock) {
         Materialize.toast("<i class='fa fa-times red-text'></i>&nbsp; Stock es menor a lo seleccionado.", 8000);
         $scope.snip = new Array();
-        angular.element("#snip").closeModal();
+        angular.element("#snip").modal('close');
         return false;
       } else {
         $scope.stks[$scope.indexshownip].quantity = amount;
         if (response >= 0) {
           $scope.nipdetails[response].details = $scope.snip;
           $scope.snip = new Array();
-          angular.element("#snip").closeModal();
+          angular.element("#snip").modal('close');
         } else {
           $scope.nipdetails.push({
             'materials': $scope.gmaterials,
@@ -619,7 +619,7 @@ controllers = function($scope, $timeout, $q, attendFactory) {
             'details': $scope.snip
           });
           $scope.snip = new Array();
-          angular.element("#snip").closeModal();
+          angular.element("#snip").modal('close');
         }
       }
     });
@@ -634,7 +634,7 @@ controllers = function($scope, $timeout, $q, attendFactory) {
       x.status = false;
     }
     $scope.stks[$scope.indexshownip].quantity = amount;
-    angular.element("#snip").closeModal();
+    angular.element("#snip").modal('close');
     $scope.snip = new Array();
   };
   $scope.SetSezoItemSelected = function() {
@@ -656,7 +656,7 @@ controllers = function($scope, $timeout, $q, attendFactory) {
         $scope.stock().then(function(result) {
           if (result) {
             $scope.enableGuide();
-            angular.element("#mstock").closeModal();
+            angular.element("#mstock").modal('close');
             Materialize.toast("<i class='fa fa-check fa-2x green-text'></i>&nbsp; Completo!", 3000);
             $timeout(function() {
               angular.element('.lean-overlay').remove();
@@ -710,12 +710,12 @@ controllers = function($scope, $timeout, $q, attendFactory) {
   $scope.openObs = function(index) {
     $scope.idxobs = index;
     $scope.icomment = '';
-    angular.element("#iobs").openModal();
+    angular.element("#iobs").modal('open');
     angular.element("#textObs").trumbowyg();
   };
   $scope.saveComment = function() {
     $scope.dguide[$scope.idxobs].observation = angular.element("#textObs").trumbowyg("html");
-    angular.element("#iobs").closeModal();
+    angular.element("#iobs").modal('close');
   };
   $scope.openGenerateGuide = function() {
     var i, items, ref, x;
@@ -728,7 +728,7 @@ controllers = function($scope, $timeout, $q, attendFactory) {
     if (items > 12) {
       Materialize.toast("<i class='fa fa-exclamation-circle fa-2x amber-text'></i>&nbsp; Has seleccionado más de 12 items para la guia de remisión!<br>&nbsp;Te recomendamos que quites algunos items para poder imprimir la guia sin problemas.", 60000);
     }
-    angular.element("#mguide").openModal();
+    angular.element("#mguide").modal('open');
   };
   $scope.genGuide = function() {
     var prms;
@@ -769,7 +769,7 @@ controllers = function($scope, $timeout, $q, attendFactory) {
           console.info(prms);
           attendFactory.genGuideRemision(prms).success(function(response) {
             if (response.status) {
-              angular.element("#mguide").closeModal();
+              angular.element("#mguide").modal('close');
               Materialize.toast("<i class='fa fa-check fa-2x green-text'></i>&nbsp;Felicidades!, Se genero la guia <strong>" + prms.guide + "</strong>", 2000);
               $timeout(function() {
                 $scope.vgenrem = true;
@@ -797,7 +797,7 @@ controllers = function($scope, $timeout, $q, attendFactory) {
     win.focus();
   };
   $scope.closePrint = function() {
-    angular.element("#mprint").closeModal();
+    angular.element("#mprint").modal('close');
     location.reload();
   };
   return $scope.test = function() {

@@ -82,7 +82,7 @@
     $scope.edit = [];
     $scope.dels = [];
     angular.element(document).ready(function() {
-      angular.element(".modal-trigger").modal();
+      angular.element('.modal').modal();
       angular.element(".chosen-select").chosen({
         width: '100%'
       });
@@ -161,7 +161,7 @@
       $scope.edit.quantity = obj.quantity;
       $scope.edit.price = Number(obj.price);
       $scope.edit.unit = obj.unit;
-      angular.element("#eDetails").openModal();
+      angular.element("#eDetails").modal('open');
     };
     $scope.setCategory = function(value) {
       $scope.so.tag = "" + value;

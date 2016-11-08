@@ -40,7 +40,7 @@ app.controller 'DSCtrl', ($scope, $http, $cookies, $compile, $timeout, $sce, $q)
   $scope.sdnip = []
   $scope.lplanes = []
   angular.element(document).ready ->
-    $('.modal-trigger').modal()
+    $('.modal').modal()
     $table = $(".floatThead")
     $table.floatThead
       position: 'absolute'
@@ -696,7 +696,7 @@ app.controller 'DSCtrl', ($scope, $http, $cookies, $compile, $timeout, $sce, $q)
         return
     return
   $scope.showCommentMat = ->
-    $("#commentm").openModal()
+    $("#commentm").modal('open')
     # console.log this
     $("#mcs").val this.$parent.x.fields.materials.pk
       .attr "data-brand", this.$parent.x.fields.brand.pk
@@ -724,7 +724,7 @@ app.controller 'DSCtrl', ($scope, $http, $cookies, $compile, $timeout, $sce, $q)
       $event.currentTarget.innerHTML = """<i class="fa fa-floppy-o"></i> GUARDAR"""
       if response.status
         $scope.mmc = ''
-        $("#commentm").closeModal()
+        $("#commentm").modal('close')
         return
     return
   $scope.changeSelOrder = ($event) ->
@@ -752,7 +752,7 @@ app.controller 'DSCtrl', ($scope, $http, $cookies, $compile, $timeout, $sce, $q)
       return
     if data.length
       $scope.dataOrders = data
-      $("#morders").openModal()
+      $("#morders").modal('open')
       return
     return
     # $scope.dataOrders = []
@@ -809,7 +809,7 @@ app.controller 'DSCtrl', ($scope, $http, $cookies, $compile, $timeout, $sce, $q)
     # $timeout ->
     #   console.log $scope.dataOrders.length
     #   if $scope.dataOrders.length
-    #     $("#morders").openModal()
+    #     $("#morders").modal('open')
     #     return
     #   else
     #     swal "Ninguno.", "Debe de seleccionar al menos unos.", "warning"
@@ -843,7 +843,7 @@ app.controller 'DSCtrl', ($scope, $http, $cookies, $compile, $timeout, $sce, $q)
     remove().then (result) ->
       $scope.dataOrders = $tmp
       if $scope.dataOrders.length <= 0
-        angular.element("#morders").closeModal()
+        angular.element("#morders").modal('close')
       return
     return
   $scope.getNippleMaterials = ($event) ->
@@ -1001,7 +1001,7 @@ app.controller 'DSCtrl', ($scope, $http, $cookies, $compile, $timeout, $sce, $q)
     $http.post "", form, transformRequest: angular.identity, headers: 'Content-Type': `undefined`
     .success (response, status, headers, config) ->
       if response.status
-        angular.element("#mdplane").closeModal()
+        angular.element("#mdplane").modal('close')
         $scope.listPlanes()
         return
       else
@@ -1015,7 +1015,7 @@ app.controller 'DSCtrl', ($scope, $http, $cookies, $compile, $timeout, $sce, $q)
   $scope.showFull = (file) ->
     angular.element("#sPlane > div > iframe").attr("src", $scope.validUrl(file))
     # $scope.sfplane = $sce.trustAsResourceUrl($scope.validUrl(file))
-    angular.element("#sPlane").openModal()
+    angular.element("#sPlane").modal('open')
     # console.info $sce.($scope.validUrl(file))
     return
 

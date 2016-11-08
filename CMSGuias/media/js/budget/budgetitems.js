@@ -11,7 +11,7 @@ app.controller('BItemsCtrl', function($scope, $http, $cookies) {
   $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
   angular.element(document).ready(function() {
     console.log("init document");
-    $('.modal-trigger').modal();
+    $('.modal').modal();
     $(".modal.bottom-sheet").css("max-height", "80%");
     $scope.showDetails();
   });
@@ -83,7 +83,7 @@ app.controller('BItemsCtrl', function($scope, $http, $cookies) {
         console.log(response);
         $scope.getItems();
         $scope.items = {};
-        $("#mitems").closeModal();
+        $("#mitems").modal('close');
       } else {
         swal("Alerta!", "No se guardado los datos. " + response.raise + ".", "error");
       }
@@ -121,7 +121,7 @@ app.controller('BItemsCtrl', function($scope, $http, $cookies) {
       ibudgeti: this.mi.budgeti
     };
     console.log($scope.items);
-    $("#mitems").openModal();
+    $("#mitems").modal('open');
   };
   $scope.actionCopy = function() {
     var params;

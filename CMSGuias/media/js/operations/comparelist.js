@@ -121,7 +121,7 @@ app.controller('ctrl', function($scope, $cookies, $timeout, $q, fDSMetrado) {
     $cell = $event.currentTarget.cells;
     if ($cell[9].innerText.replace(' ', '') !== "") {
       fDSMetrado.getDataMaterials($cell[1].innerText).then(function(response) {
-        $("#medit").openModal();
+        $("#medit").modal('open');
         $scope.brand = response.data;
         $timeout(function() {
           $scope.ename = $cell[2].innerText;
@@ -180,7 +180,7 @@ app.controller('ctrl', function($scope, $cookies, $timeout, $q, fDSMetrado) {
         $scope.obrand = "";
         $scope.omodel = "";
         $scope.loadList();
-        $("#medit").closeModal();
+        $("#medit").modal('close');
       } else {
         swal("No se ha guardado los cambios", "", "warning");
       }
@@ -199,7 +199,7 @@ app.controller('ctrl', function($scope, $cookies, $timeout, $q, fDSMetrado) {
           'name': response.name
         });
         console.log($scope.brand);
-        return angular.element("#mbrand").closeModal();
+        return angular.element("#mbrand").modal('close');
       } else {
         return swal("No se ha guardado los cambios", "", "warning");
       }
@@ -219,24 +219,24 @@ app.controller('ctrl', function($scope, $cookies, $timeout, $q, fDSMetrado) {
           'name': response.name
         });
         console.log($scope.model);
-        return angular.element("#mmodel").closeModal();
+        return angular.element("#mmodel").modal('close');
       } else {
         return swal("No se ha guardado los cambios", "", "warning");
       }
     });
   };
   $scope.openaBrand = function() {
-    angular.element("#mbrand").openModal();
+    angular.element("#mbrand").modal('open');
   };
   $scope.openaModel = function() {
     $scope.getBrand();
-    angular.element("#mmodel").openModal();
+    angular.element("#mmodel").modal('open');
   };
   $scope.closeBrand = function() {
-    angular.element("#mbrand").closeModal();
+    angular.element("#mbrand").modal('close');
   };
   $scope.closeModel = function() {
-    angular.element("#mmodel").closeModal();
+    angular.element("#mmodel").modal('close');
   };
   $scope.exportData = function() {
     window.open('?export=true', '_blank');

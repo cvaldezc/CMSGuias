@@ -11,7 +11,7 @@ app.controller('bidCtrl', function($scope, $http, $cookies) {
   $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
   angular.element(document).ready(function() {
     console.log('init document');
-    $(".modal-trigger").modal();
+    $('.modal').modal();
     $scope.getItem();
   });
   $scope.item = {};
@@ -86,7 +86,7 @@ app.controller('bidCtrl', function($scope, $http, $cookies) {
       performance: this.x.performance,
       amount: this.x.amount
     };
-    $("#manalysis").closeModal();
+    $("#manalysis").modal('close');
     $scope.ashow = true;
   };
   $scope.addAnalysis = function() {

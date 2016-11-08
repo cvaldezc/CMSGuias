@@ -86,7 +86,7 @@ app.controller 'ctrl', ($scope, $cookies, $timeout, $q, fDSMetrado) ->
       fDSMetrado.getDataMaterials($cell[1].innerText)
       .then (response) ->
         # console.log $scope.brand
-        $("#medit").openModal()
+        $("#medit").modal('open')
         $scope.brand = response.data
         $timeout ->
            # console.log $cell
@@ -149,7 +149,7 @@ app.controller 'ctrl', ($scope, $cookies, $timeout, $q, fDSMetrado) ->
         $scope.obrand = ""
         $scope.omodel = ""
         $scope.loadList()
-        $("#medit").closeModal()
+        $("#medit").modal('close')
       else
         swal "No se ha guardado los cambios", "", "warning"
       return
@@ -165,7 +165,7 @@ app.controller 'ctrl', ($scope, $cookies, $timeout, $q, fDSMetrado) ->
           'id': response.id
           'name': response.name
         console.log $scope.brand
-        angular.element("#mbrand").closeModal()
+        angular.element("#mbrand").modal('close')
       else
         swal "No se ha guardado los cambios", "", "warning"
     return
@@ -181,22 +181,22 @@ app.controller 'ctrl', ($scope, $cookies, $timeout, $q, fDSMetrado) ->
           'id': response.id
           'name': response.name
         console.log $scope.model
-        angular.element("#mmodel").closeModal()
+        angular.element("#mmodel").modal('close')
       else
         swal "No se ha guardado los cambios", "", "warning"
     return
   $scope.openaBrand = ->
-    angular.element("#mbrand").openModal()
+    angular.element("#mbrand").modal('open')
     return
   $scope.openaModel = ->
     $scope.getBrand()
-    angular.element("#mmodel").openModal()
+    angular.element("#mmodel").modal('open')
     return
   $scope.closeBrand = ->
-    angular.element("#mbrand").closeModal()
+    angular.element("#mbrand").modal('close')
     return
   $scope.closeModel = ->
-    angular.element("#mmodel").closeModal()
+    angular.element("#mmodel").modal('close')
     return
   $scope.exportData = ->
     # location.href = '?export'
